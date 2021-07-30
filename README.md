@@ -12,4 +12,5 @@
 
 ### filter.censor(string):
 `filter.addBlackListedWords('expletive')`
+
 `filter.censor('this sentence contains an expletive')` => `this sentence contains an *****` 
