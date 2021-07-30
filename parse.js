@@ -1,8 +1,10 @@
-var fs = require('fs');
+import fs from 'fs';
+import { resolve } from 'path';
+
 
 function readModuleFile(path, callback) {
     try {
-        var filename = require.resolve(path);
+        var filename = resolve(path);
         fs.readFile(filename, 'utf8', callback);
     } catch (e) {
         console.log('error in readModuleFile()', path, e);
@@ -17,6 +19,7 @@ readModuleFile('./data/profanity-list.txt', (err, file) => {
 
 function save(data, filename, dir = './data') {
     let file = JSON.stringify(data);
+    file = "export default " + file;
     fs.writeFileSync(`${dir}/${filename}`, file);
     console.log(`saved ${filename} to ${dir}`);
 }
@@ -39,9 +42,6 @@ function processRawProfanityList(data) {
         }
     }
     // save data as JSON
-    save(whitelist, 'whitelist.json');
-    save(blacklist, 'blacklist.json');
+    save(whitelist, 'whitelist.js');
+    save(blacklist, 'blacklist.js');
 }
-
-
-
