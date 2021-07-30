@@ -7,9 +7,9 @@
 
 ## API
 
-### ProfanityFilter::detect(string):
+### filter.detect(string):
 `filter.detect('this sentence does not contain expletives')` => `false`;
 
-### ProfanityFilter::censor(string):
+### filter.censor(string):
 `filter.addBlackListedWords('expletive')`
 `filter.censor('this sentence contains an expletive')` => `this sentence contains an *****` 
